@@ -1,0 +1,11 @@
+﻿{
+  "agentId": 2,
+  "agentName": "CARLTONPIEDRA",
+  "poolId": 1,
+  "poolName": "Default",
+  "serverUrl": "https://pipelinesghubeus6.actions.githubusercontent.com/CvnxluUQKJ2cRC5HvGwna7J3IosHjoEdR5DuRyC8dQbK4IzdW1/",
+  "gitHubUrl": "https://github.com/CarlosCDAW/proyectoGit",
+  "workFolder": "_work",
+  "useV2Flow": true,
+  "serverUrlV2": "https://broker.actions.githubusercontent.com/"
+}
