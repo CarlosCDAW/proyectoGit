@@ -9,9 +9,9 @@ jobs:
         env:
           SECRET_DEV_TOKEN: ${{ secrets.DEV_TOKEN }}
         run: |
-          if [ "$SECRET_DEV_TOKEN" == "$LOCAL_DEV_TOKEN" ]; then
-            echo "¡Éxito! Los tokens coinciden."
-          else
-            echo "Error: Los tokens NO coinciden."
+          if ($env:SECRET_DEV_TOKEN -eq $env:LOCAL_DEV_TOKEN) {
+            Write-Host "¡Éxito! Los tokens coinciden."
+          } else {
+            Write-Host "Error: Los tokens NO coinciden."
             exit 1
-          fi
+          }
