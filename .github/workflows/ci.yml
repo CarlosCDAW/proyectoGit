@@ -14,6 +14,8 @@ jobs:
     steps:
       - name: Checkout código
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref || github.ref_name }}
 
       - name: Actualizar README con la feature
         run: |
@@ -23,8 +25,7 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add README.md
           git commit -m "docs: actualizar README con feature $BRANCH_NAME" || exit 0
-          git pull --rebase origin ${{ github.head_ref || github.ref_name }}
-          git push origin HEAD:${{ github.head_ref || github.ref_name }}
+          git push
 
   validate-dev:
     needs: update-readme
