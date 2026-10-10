@@ -1,0 +1,17 @@
+name: Validar Tokens
+on: [push]
+
+jobs:
+  comparar-tokens:
+    runs-on: self-hosted
+    steps:
+      - name: Comparar DEV_TOKEN contra LOCAL_DEV_TOKEN
+        env:
+          SECRET_DEV_TOKEN: ${{ secrets.DEV_TOKEN }}
+        run: |
+          if [ "$SECRET_DEV_TOKEN" == "$LOCAL_DEV_TOKEN" ]; then
+            echo "¡Éxito! Los tokens coinciden."
+          else
+            echo "Error: Los tokens NO coinciden."
+            exit 1
+          fi
