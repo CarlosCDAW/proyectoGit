@@ -2,3 +2,4 @@ Primera línea
 segunda línea
 
 Modificando prueba en feature/mi-feature desde cuenta colaboradora
+Modificando prueba en feature/mi-feature para provocar un error
