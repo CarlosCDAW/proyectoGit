@@ -7,3 +7,4 @@ Modificando prueba en feature/mi-feature para provocar un error V02
 Modificando prueba en feature/mi-feature para provocar un error V03
 Modificando prueba en feature/mi-feature para provocar un error V04
 Modificando prueba en feature/mi-feature para provocar un error V05
+Modificando prueba en feature/prueba-final para provocar un error V01
