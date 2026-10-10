@@ -1,0 +1,43 @@
+name: CD Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    types: [ opened, synchronize, reopened ]
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      - name: Incrementar versión en README
+        run: |
+          FECHA_HORA=$(date '+%Y-%m-%d %H:%M:%S')
+          CURRENT_VER=$(grep -oE "AppVersion-[0-9]+" README.md | grep -oE "[0-9]+" || echo "0")
+          NEXT_VER=$((CURRENT_VER + 1))
+          sed -i -E "s/AppVersion-[0-9]+/AppVersion-$NEXT_VER ($FECHA_HORA)/g" README.md
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git commit -m "bump: AppVersion-$NEXT_VER con fecha $FECHA_HORA" || exit 0
+          git push
+
+  validate-prod:
+    needs: update-readme
+    runs-on: self-hosted
+    steps:
+      - name: Validar token de producción
+        env:
+          PROD_TOKEN: ${{ secrets.PROD_TOKEN }}
+        run: |
+          if ($env:PROD_TOKEN -eq $env:LOCAL_PROD_TOKEN) {
+            Write-Host "PROD_TOKEN validado con éxito."
+          } else {
+            Write-Host "Error: PROD_TOKEN no coincide con LOCAL_PROD_TOKEN."
+            exit 1
+          }
