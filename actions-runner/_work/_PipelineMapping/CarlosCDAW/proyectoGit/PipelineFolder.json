@@ -1,0 +1,12 @@
+﻿{
+  "repositoryName": "CarlosCDAW/proyectoGit",
+  "pipelineDirectory": "proyectoGit",
+  "workspaceDirectory": "proyectoGit\\proyectoGit",
+  "repositories": {
+    "CarlosCDAW/proyectoGit": {
+      "repositoryPath": "proyectoGit\\proyectoGit",
+      "lastRunOn": "10/10/2026 12:43:45 +02:00"
+    }
+  },
+  "lastRunOn": "10/10/2026 12:43:45 +02:00"
+}
